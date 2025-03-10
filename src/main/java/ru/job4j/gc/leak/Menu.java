@@ -66,7 +66,7 @@ public class Menu {
                 System.out.println();
                 memUsage();
             } else if (SHOW_ALL_POSTS == userChoice) {
-                System.out.println(PostStore.getPosts());
+                System.out.println(postStore.getPosts());
             } else if (DELETE_POST == userChoice) {
                 System.out.println("Удаление всех постов ...");
                 postStore.removeAll();
