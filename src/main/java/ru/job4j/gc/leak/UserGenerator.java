@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Random;
 
 public class UserGenerator implements Generate {
-
     private List<String> names;
     private List<String> surnames;
     private List<String> patrons;
@@ -21,20 +20,20 @@ public class UserGenerator implements Generate {
 
     @Override
     public void generate() {
-        if (names == null) {
+        if (users.isEmpty()) {
             readAll();
-        }
-        users.clear();
-        int newUsers = 1000;
-        for (int i = 0; i < newUsers; i++) {
-            StringBuilder nameBuilder = new StringBuilder();
-            String separator = " ";
-            nameBuilder.append(surnames.get(random.nextInt(surnames.size()))).append(separator)
-                    .append(names.get(random.nextInt(names.size()))).append(separator)
-                    .append(patrons.get(random.nextInt(patrons.size())));
-            var user = new User();
-            user.setName(nameBuilder.toString());
-            users.add(user);
+            int newUsers = 1000;
+            for (int i = 0; i < newUsers; i++) {
+                StringBuilder nameBuilder = new StringBuilder();
+                String separator = " ";
+                nameBuilder.append(surnames.get(random.nextInt(surnames.size()))).append(separator)
+                        .append(names.get(random.nextInt(names.size()))).append(separator)
+                        .append(patrons.get(random.nextInt(patrons.size())));
+                var user = new User();
+                user.setName(nameBuilder.toString());
+                users.add(user);
+
+            }
         }
     }
 
@@ -49,6 +48,9 @@ public class UserGenerator implements Generate {
     }
 
     public User randomUser() {
+        if (users.isEmpty()) {
+            throw new IllegalStateException("Список пользователей пуст, используйте generate()");
+        }
         return users.get(random.nextInt(users.size()));
     }
 }
