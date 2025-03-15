@@ -40,9 +40,8 @@ class CommentGeneratorTest {
         assertThat(commentGenerator.getComments().get(25).getText()).isNotEmpty();
     }
 
-
     @Test
-    public void whenCommentsListIsEmpty_thenThrowException() {
+    public void whenCommentsListIsEmptyThenThrowException() {
         Random rand = new Random();
         CommentGenerator commentGenerator = new CommentGenerator(rand, new UserGenerator(rand));
         IllegalStateException exception = assertThrows(

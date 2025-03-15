@@ -25,7 +25,7 @@ class UserGeneratorTest {
     }
 
     @Test
-    public void whenUsersListIsEmpty_thenThrowException() {
+    public void whenUsersListIsEmptyThenThrowException() {
         UserGenerator userGenerator = new UserGenerator(new Random());
         IllegalStateException exception = assertThrows(
                 IllegalStateException.class,
